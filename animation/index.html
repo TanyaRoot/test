@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animation</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+  <section class="block_css">
+    <div class="box_css">
+      <span>CSS</span>
+      <span>5%</span>
+    </div>
+    <div class="load">
+      <div class="load_line"></div>
+    </div>
+  </section>
+
+
+  <svg class=" block_svg" height="24" width="200" viewBox="5 5 -1 -1" >
+    <text class="svg_text" x="0" y="22">SVG</text>
+    <text class="svg_text" x="370" y="22">55%</text>
+    <line id="load" x1="0" y1="40" x2="0" y2="40" stroke="#559af1" stroke-width="10">
+      <animate attributeType="XML"
+               attributeName="x2" from="0" to="400" dur="2s" repeatCount="1" begin="1s" fill="freeze"
+        ></animate>
+    </line>
+    <line x1="0" y1="45" x2="400" y2="45" stroke="black" stroke-width="1"/>
+  </svg>
+
+  <svg class=" block_svg_css" height="400" width="200" viewBox="5 5 -1 -1" >
+    <text class="svg_text" x="0" y="22">SVG + CSS</text>
+    <text class="svg_text" x="370" y="22">55%</text>
+    <line class="load_svg_css" x1="0" y1="40" x2="400" y2="40" stroke="#559af1" stroke-width="10" />
+    <line x1="0" y1="45" x2="400" y2="45" stroke="black" stroke-width="1"/>
+  </svg>
+
+
+  <section class="block_js">
+    <div class="box_css">
+      <span>CSS + JS</span>
+      <span>5%</span>
+    </div>
+    <div class="load">
+      <div  class="load_lineJS"></div>
+    </div>
+  </section>
+
+
+
+<!-- JS canvas -->
+<!-- <span>JS</span>
+<span>5%</span> -->
+  <canvas  id="canvas" width="400" height="70" ></canvas>
+  <!-- <canvas  id="canvas" width="20" height="10"></canvas> -->
+
+<script src="./script.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(function() {
+    const line = document.querySelector('.load_lineJS')
+      let width = 0
+      const action = setInterval(move, 24)
+      function move() {
+        width += 1
+        if (width >= 100) clearInterval(action)
+        line.style.width = width + '%'
+      }
+    }, 1000)
+  })
+</script>
+
+</body>
+</html>
